@@ -22,6 +22,7 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.GitHubSearch.NoActionBar"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
