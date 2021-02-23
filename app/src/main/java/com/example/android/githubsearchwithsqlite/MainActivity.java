@@ -2,6 +2,7 @@ package com.example.android.githubsearchwithsqlite;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceManager;
@@ -23,17 +24,21 @@ import android.widget.TextView;
 
 import com.example.android.githubsearchwithsqlite.data.GitHubRepo;
 import com.example.android.githubsearchwithsqlite.data.LoadingStatus;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
-        implements GitHubSearchAdapter.OnSearchResultClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
+        implements GitHubSearchAdapter.OnSearchResultClickListener,
+            SharedPreferences.OnSharedPreferenceChangeListener,
+            NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private RecyclerView searchResultsRV;
     private EditText searchBoxET;
     private ProgressBar loadingIndicatorPB;
     private TextView errorMessageTV;
+    private DrawerLayout drawerLayout;
 
     private GitHubSearchAdapter githubSearchAdapter;
     private GitHubSearchViewModel githubSearchViewModel;
@@ -49,6 +54,7 @@ public class MainActivity extends AppCompatActivity
         this.searchResultsRV = findViewById(R.id.rv_search_results);
         this.loadingIndicatorPB = findViewById(R.id.pb_loading_indicator);
         this.errorMessageTV = findViewById(R.id.tv_error_message);
+        this.drawerLayout = findViewById(R.id.drawer_layout);
 
         this.searchResultsRV.setLayoutManager(new LinearLayoutManager(this));
         this.searchResultsRV.setHasFixedSize(true);
@@ -90,6 +96,9 @@ public class MainActivity extends AppCompatActivity
                     }
                 }
         );
+
+        NavigationView navigationView = findViewById(R.id.nv_nav_drawer);
+        navigationView.setNavigationItemSelectedListener(this);
 
         Button searchButton = (Button)findViewById(R.id.btn_search);
         searchButton.setOnClickListener(new View.OnClickListener() {
@@ -139,6 +148,25 @@ public class MainActivity extends AppCompatActivity
     protected void onDestroy() {
         this.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
         super.onDestroy();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        this.drawerLayout.closeDrawers();
+        switch (item.getItemId()) {
+            case R.id.nav_search:
+                return true;
+            case R.id.nav_bookmarked_repos:
+                Intent bookmarkedReposIntent = new Intent(this, BookmarkedRepos.class);
+                startActivity(bookmarkedReposIntent);
+                return true;
+            case R.id.nav_settings:
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                startActivity(settingsIntent);
+                return true;
+            default:
+                return false;
+        }
     }
 
     @Override

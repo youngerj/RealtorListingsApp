@@ -9,6 +9,10 @@
     <string name="action_settings">Settings</string>
     <string name="action_bookmark">Bookmark this repo</string>
 
+    <string name="nav_search">Search</string>
+    <string name="nav_bookmarked_repos">Bookmarked repos</string>
+    <string name="nav_settings">Settings</string>
+
     <string name="share_repo_text">Check out this GitHub repo I found in the CS 492 App 🤓 %1$s (%2$s)</string>
 
     <!-- Strings for sort-by preference -->
