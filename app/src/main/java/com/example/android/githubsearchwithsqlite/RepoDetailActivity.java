@@ -2,6 +2,8 @@ package com.example.android.githubsearchwithsqlite;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -24,6 +26,7 @@ public class RepoDetailActivity extends AppCompatActivity {
 
     private GitHubRepo repo;
 
+    private BookmarkedReposViewModel viewModel;
     private boolean isBookmarked;
 
     @Override
@@ -32,6 +35,10 @@ public class RepoDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_repo_detail);
 
         this.isBookmarked = false;
+        this.viewModel = new ViewModelProvider(
+                this,
+                new ViewModelProvider.AndroidViewModelFactory(getApplication())
+        ).get(BookmarkedReposViewModel.class);
 
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra(EXTRA_GITHUB_REPO)) {
@@ -51,6 +58,24 @@ public class RepoDetailActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.repo_detail, menu);
+
+        this.viewModel.getBookmarkedRepoByName(this.repo.fullName).observe(
+                this,
+                new Observer<GitHubRepo>() {
+                    @Override
+                    public void onChanged(GitHubRepo repo) {
+                        MenuItem menuItem = menu.findItem(R.id.action_bookmark);
+                        if (repo == null) {
+                            isBookmarked = false;
+                            menuItem.setIcon(R.drawable.ic_action_bookmark_border);
+                        } else {
+                            isBookmarked = true;
+                            menuItem.setIcon(R.drawable.ic_action_bookmark_checked);
+                        }
+                    }
+                }
+        );
+
         return true;
     }
 
@@ -82,8 +107,10 @@ public class RepoDetailActivity extends AppCompatActivity {
             menuItem.setChecked(this.isBookmarked);
             if (this.isBookmarked) {
                 menuItem.setIcon(R.drawable.ic_action_bookmark_checked);
+                this.viewModel.insertBookmarkedRepo(this.repo);
             } else {
                 menuItem.setIcon(R.drawable.ic_action_bookmark_border);
+                this.viewModel.deleteBookmarkedRepo(this.repo);
             }
         }
     }

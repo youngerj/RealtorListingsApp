@@ -2,6 +2,10 @@ package com.example.android.githubsearchwithsqlite.data;
 
 import android.app.Application;
 
+import java.util.List;
+
+import androidx.lifecycle.LiveData;
+
 public class BookmarkedReposRepository {
     private BookmarkedReposDao dao;
 
@@ -26,5 +30,13 @@ public class BookmarkedReposRepository {
                 dao.delete(repo);
             }
         });
+    }
+
+    public LiveData<List<GitHubRepo>> getAllBookmarkedRepos() {
+        return this.dao.getAllRepos();
+    }
+
+    public LiveData<GitHubRepo> getBookmarkedRepoByName(String fullName) {
+        return this.dao.getRepoByName(fullName);
     }
 }

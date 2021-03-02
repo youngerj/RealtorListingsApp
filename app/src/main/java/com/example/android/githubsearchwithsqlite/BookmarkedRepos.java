@@ -1,6 +1,8 @@
 package com.example.android.githubsearchwithsqlite;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,7 +11,11 @@ import android.os.Bundle;
 
 import com.example.android.githubsearchwithsqlite.data.GitHubRepo;
 
+import java.util.List;
+
 public class BookmarkedRepos extends AppCompatActivity implements GitHubSearchAdapter.OnSearchResultClickListener {
+
+    private BookmarkedReposViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +28,21 @@ public class BookmarkedRepos extends AppCompatActivity implements GitHubSearchAd
 
         GitHubSearchAdapter adapter = new GitHubSearchAdapter(this);
         bookmarkedReposRV.setAdapter(adapter);
+
+        this.viewModel = new ViewModelProvider(
+                this,
+                new ViewModelProvider.AndroidViewModelFactory(getApplication())
+        ).get(BookmarkedReposViewModel.class);
+
+        this.viewModel.getAllBookmarkedRepos().observe(
+                this,
+                new Observer<List<GitHubRepo>>() {
+                    @Override
+                    public void onChanged(List<GitHubRepo> gitHubRepos) {
+                        adapter.updateSearchResults(gitHubRepos);
+                    }
+                }
+        );
     }
 
     @Override

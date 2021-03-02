@@ -5,7 +5,10 @@ import android.app.Application;
 import com.example.android.githubsearchwithsqlite.data.BookmarkedReposRepository;
 import com.example.android.githubsearchwithsqlite.data.GitHubRepo;
 
+import java.util.List;
+
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 public class BookmarkedReposViewModel extends AndroidViewModel {
     private BookmarkedReposRepository repository;
@@ -21,5 +24,13 @@ public class BookmarkedReposViewModel extends AndroidViewModel {
 
     public void deleteBookmarkedRepo(GitHubRepo repo) {
         this.repository.deleteBookmarkedRepo(repo);
+    }
+
+    public LiveData<List<GitHubRepo>> getAllBookmarkedRepos() {
+        return this.repository.getAllBookmarkedRepos();
+    }
+
+    public LiveData <GitHubRepo> getBookmarkedRepoByName(String fullName) {
+        return this.repository.getBookmarkedRepoByName(fullName);
     }
 }
