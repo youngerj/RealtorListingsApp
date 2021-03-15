@@ -1,4 +1,4 @@
-package com.example.android.githubsearchwithsqlite.data;
+package com.example.android.realtorlistingsapp.data;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

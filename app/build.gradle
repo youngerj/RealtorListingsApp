@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.android.githubsearchwithsqlite"
+        applicationId "com.example.android.realtorlistingsapp"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

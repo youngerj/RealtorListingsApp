@@ -1,9 +1,9 @@
-package com.example.android.githubsearchwithsqlite.data;
+package com.example.android.realtorlistingsapp.data;
 
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.example.android.githubsearchwithsqlite.utils.GitHubUtils;
+import com.example.android.realtorlistingsapp.utils.GitHubUtils;
 
 import java.util.List;
 

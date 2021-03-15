@@ -1,11 +1,11 @@
-package com.example.android.githubsearchwithsqlite;
+package com.example.android.realtorlistingsapp;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.android.githubsearchwithsqlite.data.GitHubRepo;
+import com.example.android.realtorlistingsapp.data.GitHubRepo;
 
 import java.util.List;
 

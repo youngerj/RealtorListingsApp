@@ -1,4 +1,4 @@
-package com.example.android.githubsearchwithsqlite;
+package com.example.android.realtorlistingsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.android.githubsearchwithsqlite.data.GitHubRepo;
+import com.example.android.realtorlistingsapp.data.GitHubRepo;
 
 import java.util.List;
 

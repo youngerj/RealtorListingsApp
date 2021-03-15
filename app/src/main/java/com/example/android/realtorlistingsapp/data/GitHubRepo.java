@@ -1,11 +1,10 @@
-package com.example.android.githubsearchwithsqlite.data;
+package com.example.android.realtorlistingsapp.data;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
 import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 

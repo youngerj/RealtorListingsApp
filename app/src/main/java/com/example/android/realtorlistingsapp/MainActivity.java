@@ -1,4 +1,4 @@
-package com.example.android.githubsearchwithsqlite;
+package com.example.android.realtorlistingsapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -25,8 +25,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.android.githubsearchwithsqlite.data.GitHubRepo;
-import com.example.android.githubsearchwithsqlite.data.LoadingStatus;
+import com.example.android.realtorlistingsapp.data.GitHubRepo;
+import com.example.android.realtorlistingsapp.data.LoadingStatus;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;

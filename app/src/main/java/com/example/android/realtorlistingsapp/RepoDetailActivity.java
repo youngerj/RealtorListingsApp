@@ -1,4 +1,4 @@
-package com.example.android.githubsearchwithsqlite;
+package com.example.android.realtorlistingsapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.githubsearchwithsqlite.data.GitHubRepo;
+import com.example.android.realtorlistingsapp.data.GitHubRepo;
 
 public class RepoDetailActivity extends AppCompatActivity {
     public static final String EXTRA_GITHUB_REPO = "GitHubRepo";

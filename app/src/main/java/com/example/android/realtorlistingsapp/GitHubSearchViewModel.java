@@ -1,8 +1,8 @@
-package com.example.android.githubsearchwithsqlite;
+package com.example.android.realtorlistingsapp;
 
-import com.example.android.githubsearchwithsqlite.data.GitHubRepo;
-import com.example.android.githubsearchwithsqlite.data.GitHubSearchRepository;
-import com.example.android.githubsearchwithsqlite.data.LoadingStatus;
+import com.example.android.realtorlistingsapp.data.GitHubRepo;
+import com.example.android.realtorlistingsapp.data.GitHubSearchRepository;
+import com.example.android.realtorlistingsapp.data.LoadingStatus;
 
 import java.util.List;
 

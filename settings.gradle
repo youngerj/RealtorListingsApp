@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "GitHubSearch With SQLite"
+rootProject.name = "Realtor Listings App"

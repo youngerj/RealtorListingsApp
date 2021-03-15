@@ -1,4 +1,4 @@
-package com.example.android.githubsearchwithsqlite.utils;
+package com.example.android.realtorlistingsapp.utils;
 
 import android.text.TextUtils;
 
