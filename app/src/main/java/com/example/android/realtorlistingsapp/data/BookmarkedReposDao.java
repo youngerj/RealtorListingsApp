@@ -12,14 +12,14 @@ import androidx.room.Query;
 @Dao
 public interface BookmarkedReposDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(GitHubRepo repo);
+    void insert(RealtorListing repo);
 
     @Delete
-    void delete(GitHubRepo repo);
+    void delete(RealtorListing repo);
 
-    @Query("SELECT * FROM bookmarkedRepos")
-    LiveData<List<GitHubRepo>> getAllRepos();
+    @Query("SELECT * FROM realtorListings")
+    LiveData<List<RealtorListing>> getAllRepos();
 
-    @Query("SELECT * FROM bookmarkedRepos WHERE fullName = :fullName LIMIT 1 ")
-    LiveData<GitHubRepo> getRepoByName(String fullName);
+    @Query("SELECT * FROM realtorListings WHERE id = :fullName LIMIT 1 ")
+    LiveData<RealtorListing> getRepoByName(String fullName);
 }

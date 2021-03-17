@@ -3,7 +3,8 @@ package com.example.android.realtorlistingsapp;
 import android.app.Application;
 
 import com.example.android.realtorlistingsapp.data.BookmarkedReposRepository;
-import com.example.android.realtorlistingsapp.data.GitHubRepo;
+import com.example.android.realtorlistingsapp.data.RealtorListing;
+import com.example.android.realtorlistingsapp.data.SavedListing;
 
 import java.util.List;
 
@@ -18,19 +19,19 @@ public class BookmarkedReposViewModel extends AndroidViewModel {
         this.repository = new BookmarkedReposRepository(application);
     }
 
-    public void insertBookmarkedRepo(GitHubRepo repo) {
+    public void insertBookmarkedRepo(RealtorListing repo) {
         this.repository.insertBookmarkedRepo(repo);
     }
 
-    public void deleteBookmarkedRepo(GitHubRepo repo) {
+    public void deleteBookmarkedRepo(RealtorListing repo) {
         this.repository.deleteBookmarkedRepo(repo);
     }
 
-    public LiveData<List<GitHubRepo>> getAllBookmarkedRepos() {
+    public LiveData<List<RealtorListing>> getAllBookmarkedRepos() {
         return this.repository.getAllBookmarkedRepos();
     }
 
-    public LiveData <GitHubRepo> getBookmarkedRepoByName(String fullName) {
+    public LiveData <RealtorListing> getBookmarkedRepoByName(String fullName) {
         return this.repository.getBookmarkedRepoByName(fullName);
     }
 }

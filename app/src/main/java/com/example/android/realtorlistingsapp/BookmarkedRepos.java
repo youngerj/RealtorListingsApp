@@ -9,11 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.android.realtorlistingsapp.data.GitHubRepo;
+import com.example.android.realtorlistingsapp.data.RealtorListing;
+import com.example.android.realtorlistingsapp.data.SavedListing;
 
 import java.util.List;
 
-public class BookmarkedRepos extends AppCompatActivity implements GitHubSearchAdapter.OnSearchResultClickListener {
+public class BookmarkedRepos extends AppCompatActivity implements RealtorSearchAdapter.OnSearchResultClickListener {
 
     private BookmarkedReposViewModel viewModel;
 
@@ -26,7 +27,7 @@ public class BookmarkedRepos extends AppCompatActivity implements GitHubSearchAd
         bookmarkedReposRV.setLayoutManager(new LinearLayoutManager(this));
         bookmarkedReposRV.setHasFixedSize(true);
 
-        GitHubSearchAdapter adapter = new GitHubSearchAdapter(this);
+        RealtorSearchAdapter adapter = new RealtorSearchAdapter(this);
         bookmarkedReposRV.setAdapter(adapter);
 
         this.viewModel = new ViewModelProvider(
@@ -36,17 +37,17 @@ public class BookmarkedRepos extends AppCompatActivity implements GitHubSearchAd
 
         this.viewModel.getAllBookmarkedRepos().observe(
                 this,
-                new Observer<List<GitHubRepo>>() {
+                new Observer<List<RealtorListing>>() {
                     @Override
-                    public void onChanged(List<GitHubRepo> gitHubRepos) {
-                        adapter.updateSearchResults(gitHubRepos);
+                    public void onChanged(List<RealtorListing> realtorListings) {
+                        adapter.updateSearchResults(realtorListings);
                     }
                 }
         );
     }
 
     @Override
-    public void onSearchResultClicked(GitHubRepo repo) {
+    public void onSearchResultClicked(RealtorListing repo) {
         Intent intent = new Intent(this, RepoDetailActivity.class);
         intent.putExtra(RepoDetailActivity.EXTRA_GITHUB_REPO, repo);
         startActivity(intent);

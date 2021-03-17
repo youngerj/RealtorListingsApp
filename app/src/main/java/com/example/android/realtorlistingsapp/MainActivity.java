@@ -25,14 +25,14 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.android.realtorlistingsapp.data.GitHubRepo;
+import com.example.android.realtorlistingsapp.data.RealtorListing;
 import com.example.android.realtorlistingsapp.data.LoadingStatus;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
-        implements GitHubSearchAdapter.OnSearchResultClickListener,
+        implements RealtorSearchAdapter.OnSearchResultClickListener,
             SharedPreferences.OnSharedPreferenceChangeListener,
             NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity
     private TextView errorMessageTV;
     private DrawerLayout drawerLayout;
 
-    private GitHubSearchAdapter githubSearchAdapter;
-    private GitHubSearchViewModel githubSearchViewModel;
+    private RealtorSearchAdapter githubSearchAdapter;
+    private RealtorSearchViewModel githubSearchViewModel;
 
     private SharedPreferences sharedPreferences;
 
@@ -62,20 +62,20 @@ public class MainActivity extends AppCompatActivity
         this.searchResultsRV.setLayoutManager(new LinearLayoutManager(this));
         this.searchResultsRV.setHasFixedSize(true);
 
-        this.githubSearchAdapter = new GitHubSearchAdapter(this);
+        this.githubSearchAdapter = new RealtorSearchAdapter(this);
         this.searchResultsRV.setAdapter(this.githubSearchAdapter);
 
         this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         this.sharedPreferences.registerOnSharedPreferenceChangeListener(this);
 
-        this.githubSearchViewModel = new ViewModelProvider(this).get(GitHubSearchViewModel.class);
+        this.githubSearchViewModel = new ViewModelProvider(this).get(RealtorSearchViewModel.class);
 
         this.githubSearchViewModel.getSearchResults().observe(
                 this,
-                new Observer<List<GitHubRepo>>() {
+                new Observer<List<RealtorListing>>() {
                     @Override
-                    public void onChanged(List<GitHubRepo> gitHubRepos) {
-                        githubSearchAdapter.updateSearchResults(gitHubRepos);
+                    public void onChanged(List<RealtorListing> realtorListings) {
+                        githubSearchAdapter.updateSearchResults(realtorListings);
                     }
                 }
         );
@@ -120,34 +120,29 @@ public class MainActivity extends AppCompatActivity
                             getString(R.string.pref_sort_key),
                             getString(R.string.pref_sort_default)
                     );
-                    String language = sharedPreferences.getString(
-                            getString(R.string.pref_language_key),
-                            getString(R.string.pref_language_default)
-                    );
-                    String user = sharedPreferences.getString(
-                            getString(R.string.pref_user_key),
-                            ""
-                    );
-                    boolean inName = sharedPreferences.getBoolean(
-                            getString(R.string.pref_in_name_key),
-                            true
-                    );
-                    boolean inDescription = sharedPreferences.getBoolean(
-                            getString(R.string.pref_in_description_key),
-                            true
-                    );
-                    boolean inReadme = sharedPreferences.getBoolean(
-                            getString(R.string.pref_in_readme_key),
-                            false
-                    );
+                    // Change to new prefs
+//                    String language = sharedPreferences.getString(
+//                            getString(R.string.pref_language_key),
+//                            getString(R.string.pref_language_default)
+//                    );
+//                    String user = sharedPreferences.getString(
+//                            getString(R.string.pref_user_key),
+//                            ""
+//                    );
+//                    boolean inName = sharedPreferences.getBoolean(
+//                            getString(R.string.pref_in_name_key),
+//                            true
+//                    );
+//                    boolean inDescription = sharedPreferences.getBoolean(
+//                            getString(R.string.pref_in_description_key),
+//                            true
+//                    );
+//                    boolean inReadme = sharedPreferences.getBoolean(
+//                            getString(R.string.pref_in_readme_key),
+//                            false
+//                    );
                     githubSearchViewModel.loadSearchResults(
-                            searchQuery,
-                            sort,
-                            language,
-                            user,
-                            inName,
-                            inDescription,
-                            inReadme
+                            searchQuery, "Portland", "OR", "relevance", "3", "2", "0", "10000000"
                     );
                 }
             }
@@ -212,7 +207,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onSearchResultClicked(GitHubRepo repo) {
+    public void onSearchResultClicked(RealtorListing repo) {
         Intent intent = new Intent(this, RepoDetailActivity.class);
         intent.putExtra(RepoDetailActivity.EXTRA_GITHUB_REPO, repo);
         startActivity(intent);

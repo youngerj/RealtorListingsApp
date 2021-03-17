@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.realtorlistingsapp.data.GitHubRepo;
+import com.example.android.realtorlistingsapp.data.RealtorListing;
 
 public class RepoDetailActivity extends AppCompatActivity {
     public static final String EXTRA_GITHUB_REPO = "GitHubRepo";
@@ -24,7 +24,7 @@ public class RepoDetailActivity extends AppCompatActivity {
 
     private Toast errorToast;
 
-    private GitHubRepo repo;
+    private RealtorListing repo;
 
     private BookmarkedReposViewModel viewModel;
     private boolean isBookmarked;
@@ -42,16 +42,16 @@ public class RepoDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra(EXTRA_GITHUB_REPO)) {
-            this.repo = (GitHubRepo)intent.getSerializableExtra(EXTRA_GITHUB_REPO);
-            Log.d(TAG, "Got repo with name: " + repo.fullName);
+            this.repo = (RealtorListing)intent.getSerializableExtra(EXTRA_GITHUB_REPO);
+            Log.d(TAG, "Got repo with name: " + repo.id);
 
             TextView repoNameTV = findViewById(R.id.tv_repo_name);
             TextView repoStarsTV = findViewById(R.id.tv_repo_stars);
             TextView repoDescriptionTV = findViewById(R.id.tv_repo_description);
 
-            repoNameTV.setText(repo.fullName);
-            repoStarsTV.setText(String.valueOf(repo.stars));
-            repoDescriptionTV.setText(repo.description);
+            repoNameTV.setText(repo.id);
+            repoStarsTV.setText(String.valueOf(repo.beds));
+            repoDescriptionTV.setText(repo.id);
         }
     }
 
@@ -59,11 +59,11 @@ public class RepoDetailActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.repo_detail, menu);
 
-        this.viewModel.getBookmarkedRepoByName(this.repo.fullName).observe(
+        this.viewModel.getBookmarkedRepoByName(this.repo.id).observe(
                 this,
-                new Observer<GitHubRepo>() {
+                new Observer<RealtorListing>() {
                     @Override
-                    public void onChanged(GitHubRepo repo) {
+                    public void onChanged(RealtorListing repo) {
                         MenuItem menuItem = menu.findItem(R.id.action_bookmark);
                         if (repo == null) {
                             isBookmarked = false;
@@ -117,7 +117,7 @@ public class RepoDetailActivity extends AppCompatActivity {
 
     private void viewRepoOnWeb() {
         if (this.repo != null) {
-            Uri githubRepoUri = Uri.parse(this.repo.htmlUrl);
+            Uri githubRepoUri = Uri.parse(this.repo.url);
             Intent intent = new Intent(Intent.ACTION_VIEW, githubRepoUri);
             try {
                 startActivity(intent);
@@ -135,8 +135,8 @@ public class RepoDetailActivity extends AppCompatActivity {
         if (this.repo != null) {
             String shareText = getString(
                     R.string.share_repo_text,
-                    this.repo.fullName,
-                    this.repo.htmlUrl
+                    this.repo.id,
+                    this.repo.url
             );
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.putExtra(Intent.EXTRA_TEXT, shareText);

@@ -14,7 +14,7 @@ public class BookmarkedReposRepository {
         this.dao = db.bookmarkedReposDao();
     }
 
-    public void insertBookmarkedRepo(GitHubRepo repo) {
+    public void insertBookmarkedRepo(RealtorListing repo) {
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
@@ -23,7 +23,7 @@ public class BookmarkedReposRepository {
         });
     }
 
-    public void deleteBookmarkedRepo(GitHubRepo repo) {
+    public void deleteBookmarkedRepo(RealtorListing repo) {
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
@@ -32,11 +32,11 @@ public class BookmarkedReposRepository {
         });
     }
 
-    public LiveData<List<GitHubRepo>> getAllBookmarkedRepos() {
+    public LiveData<List<RealtorListing>> getAllBookmarkedRepos() {
         return this.dao.getAllRepos();
     }
 
-    public LiveData<GitHubRepo> getBookmarkedRepoByName(String fullName) {
+    public LiveData<RealtorListing> getBookmarkedRepoByName(String fullName) {
         return this.dao.getRepoByName(fullName);
     }
 }
