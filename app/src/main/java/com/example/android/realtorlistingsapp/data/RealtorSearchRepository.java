@@ -124,8 +124,7 @@ public class RealtorSearchRepository {
             @Override
             public void onResponse(Call<RealtorSearchResults> call, Response<RealtorSearchResults> response) {
                 if (response.code() == 200) {
-                    Log.d(TAG, String.valueOf(response.body().properties.get(0)));
-//                    Log.d(TAG, String.valueOf(response.body().properties.get(0).agents.get(0).name));
+                    Log.d(TAG, call.request().url().toString());
                     searchResults.setValue(response.body().properties);
                     loadingStatus.setValue(LoadingStatus.SUCCESS);
                 } else {
