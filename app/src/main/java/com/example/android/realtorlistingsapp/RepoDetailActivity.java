@@ -58,8 +58,10 @@ public class RepoDetailActivity extends AppCompatActivity {
             TextView repoPriceTV= findViewById(R.id.tv_price);
 
            // ImageView repoPhotoTV= findViewById(R.id.tv_photo);
-
-            repoAddressTV.setText(repo.address.line);
+            if(repo.line == null){
+                repo.line = repo.address.line;
+            }
+            repoAddressTV.setText(repo.line);
             repoBathTV.setText(String.valueOf(repo.baths));
             repoRoomTV.setText(String.valueOf(repo.beds));
             repoPriceTV.setText(String.valueOf(repo.price));
@@ -174,8 +176,8 @@ public class RepoDetailActivity extends AppCompatActivity {
 
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse(
                 "mailto:"+
-                        "?subject=" + Uri.encode("Real Estate I'm Interested In!") +
-                        "&body=" + Uri.encode("Hi " + repo.agents.get(0).name + "! I'm interested in " + repo.address.line + ". It's listed at $" + repo.price +".")
+                        "?subject=" + Uri.encode("Information about " + repo.address.line) +
+                        "&body=" + Uri.encode("Hi " + repo.agents.get(0).name + ", <br> <br> I'm interested in the property you have listed at " + repo.address.line + ". It's listed at $" + repo.price +". Could you please respond with additional information about the property? <br> <br> Thank you!")
         ));
         startActivity(emailIntent);
     }

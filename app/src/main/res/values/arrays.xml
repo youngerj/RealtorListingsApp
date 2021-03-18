@@ -14,6 +14,20 @@
         <item>@string/pref_sort_value_updated</item>
     </string-array>
 
+    <string-array name="pref_sortby_entries">
+        <item>@string/pref_sortby_entry_relevance</item>
+        <item>@string/pref_sortby_entry_min_price</item>
+        <item>@string/pref_sortby_entry_max_price</item>
+        <item>@string/pref_sortby_entry_newest</item>
+    </string-array>
+
+    <string-array name="pref_sortby_values">
+        <item></item>
+        <item>@string/pref_sortby_value_min_price</item>
+        <item>@string/pref_sortby_value_max_price</item>
+        <item>@string/pref_sortby_value_newest</item>
+    </string-array>
+
     <string-array name="pref_language_entries">
         <item>@string/pref_language_entry_any</item>
         <item>@string/pref_language_entry_c</item>

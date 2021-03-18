@@ -187,9 +187,14 @@ public class MainActivity extends AppCompatActivity
                 "100000000"
         );
 
+        String sort = sharedPreferences.getString(
+                getString(R.string.pref_sortby_key),
+                "relevance"
+        );
+
 
         realtorSearchViewModel.loadSearchResults(
-                "",city , state, "relevance", beds, baths, pmin, pmax
+                "",city , state, sort, beds, baths, pmin, pmax
         );
 
 //---------------------------------------------------------------------------------------------------------------
@@ -263,9 +268,13 @@ public class MainActivity extends AppCompatActivity
                 "100000000"
         );
 
+        String sort = sharedPreferences.getString(
+                getString(R.string.pref_sortby_key),
+                "relevance"
+        );
 
         realtorSearchViewModel.loadSearchResults(
-                "",city , state, "relevance", beds, baths, pmin, pmax
+                "",city , state, sort, beds, baths, pmin, pmax
         );
 
         //**********************************************

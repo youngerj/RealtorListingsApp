@@ -65,5 +65,16 @@
     <string name="pref_pmax_key" translatable="false">pref_pmax</string>
     <string name="pref_pmax_title">Maximum Price</string>
 
+    <!-- Strings for sorting preference -->
+    <string name="pref_sortby_key" translatable="false">pref_sortby</string>
+    <string name="pref_sortby_title">Sort By</string>
+    <string name="pref_sortby_entry_relevance">relevance</string>
+    <string name="pref_sortby_entry_min_price">lowest Price</string>
+    <string name="pref_sortby_value_min_price" translatable="false">price_low</string>
+    <string name="pref_sortby_entry_max_price">highest Price</string>
+    <string name="pref_sortby_value_max_price" translatable="false">price_high</string>
+    <string name="pref_sortby_entry_newest">newest</string>
+    <string name="pref_sortby_value_newest" translatable="false">newest</string>
+    <string name="pref_sortby_default">@string/pref_sortby_value_newest</string>
 
 </resources>
