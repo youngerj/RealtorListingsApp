@@ -19,9 +19,11 @@
         <item>@string/pref_language_entry_c</item>
         <item>@string/pref_language_entry_cpp</item>
         <item>@string/pref_language_entry_java</item>
+        <!--
         <item>@string/pref_language_entry_javascript</item>
         <item>@string/pref_language_entry_rust</item>
         <item>@string/pref_language_entry_python</item>
+        -->
     </string-array>
 
     <string-array name="pref_language_values">
@@ -29,8 +31,10 @@
         <item>@string/pref_language_value_c</item>
         <item>@string/pref_language_value_cpp</item>
         <item>@string/pref_language_value_java</item>
+        <!--
         <item>@string/pref_language_value_javascript</item>
         <item>@string/pref_language_value_rust</item>
         <item>@string/pref_language_value_python</item>
+        -->
     </string-array>
 </resources>
