@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.searchBoxET = findViewById(R.id.et_search_box);
+        //this.searchBoxET = findViewById(R.id.et_search_box);
         this.searchResultsRV = findViewById(R.id.rv_search_results);
         this.loadingIndicatorPB = findViewById(R.id.pb_loading_indicator);
         this.errorMessageTV = findViewById(R.id.tv_error_message);
@@ -110,7 +110,8 @@ public class MainActivity extends AppCompatActivity
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
-        Button searchButton = (Button)findViewById(R.id.btn_search);
+        //Button searchButton = (Button)findViewById(R.id.btn_search);
+        /*
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,6 +148,11 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
+        */
+       // String searchQuery = searchBoxET.getText().toString();
+        realtorSearchViewModel.loadSearchResults(
+                "", "Portland", "OR", "relevance", "3", "2", "0", "10000000"
+        );
     }
 
     @Override
