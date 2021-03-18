@@ -27,6 +27,25 @@
         app:useSimpleSummaryProvider="true"
         android:defaultValue="Corvallis"/>
 
+    <EditTextPreference
+        android:title="@string/pref_state_title"
+        android:key="@string/pref_state_key"
+        app:useSimpleSummaryProvider="true"
+        android:defaultValue="OR"/>
+
+    <EditTextPreference
+        android:title="@string/pref_pmin_title"
+        android:key="@string/pref_pmin_key"
+        app:useSimpleSummaryProvider="true"
+        android:defaultValue="0"/>
+
+    <EditTextPreference
+        android:title="@string/pref_pmax_title"
+        android:key="@string/pref_pmax_key"
+        app:useSimpleSummaryProvider="true"
+        android:defaultValue="100000000"/>
+
+
     <!--
     <PreferenceCategory android:title="@string/pref_in_title">
         <CheckBoxPreference
