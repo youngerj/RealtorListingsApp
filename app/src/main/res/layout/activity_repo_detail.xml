@@ -45,9 +45,7 @@
         android:layout_width="314dp"
         android:layout_height="118dp"
         android:paddingVertical="25dp"
-
         android:textAppearance="?attr/textAppearanceHeadline4"
-
         app:drawableStartCompat="@drawable/ic_price_foreground" />
 
 </LinearLayout>
