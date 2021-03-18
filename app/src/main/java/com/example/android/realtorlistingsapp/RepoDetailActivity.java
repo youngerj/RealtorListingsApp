@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.android.realtorlistingsapp.data.RealtorListing;
 
 import org.w3c.dom.Text;
@@ -56,15 +57,18 @@ public class RepoDetailActivity extends AppCompatActivity {
             TextView repoRoomTV= findViewById(R.id.tv_room);
             TextView repoPriceTV= findViewById(R.id.tv_price);
 
-            ImageView repoPhotoTV= findViewById(R.id.tv_photo);
+           // ImageView repoPhotoTV= findViewById(R.id.tv_photo);
 
             repoAddressTV.setText(repo.address.line);
             repoBathTV.setText(String.valueOf(repo.baths));
             repoRoomTV.setText(String.valueOf(repo.beds));
             repoPriceTV.setText(String.valueOf(repo.price));
 
-            repoPhotoTV.setImageURI(Uri.parse(repo.img));
-
+           // repoPhotoTV.setImageURI(Uri.parse(repo.img));
+            ImageView repoPhotoTV = findViewById(R.id.tv_photo);
+            Glide.with(this)
+                    .load(repo.img)
+                    .into(repoPhotoTV);
            // repoNameTV.setText(repo.id);
            // repoStarsTV.setText(String.valueOf(repo.beds));
           //  repoDescriptionTV.setText(repo.id);
