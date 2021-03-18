@@ -172,9 +172,24 @@ public class MainActivity extends AppCompatActivity
                 //getString(R.string.pref_language_default)
         );
 
+        String state = sharedPreferences.getString(
+                getString(R.string.pref_state_key),
+                "OR"
+        );
+
+        String pmin = sharedPreferences.getString(
+                getString(R.string.pref_pmin_key),
+                "0"
+        );
+
+        String pmax = sharedPreferences.getString(
+                getString(R.string.pref_pmax_key),
+                "100000000"
+        );
+
 
         realtorSearchViewModel.loadSearchResults(
-                "",city , "OR", "relevance", beds, baths, "0", "10000000"
+                "",city , state, "relevance", beds, baths, pmin, pmax
         );
 
 //---------------------------------------------------------------------------------------------------------------
@@ -233,9 +248,24 @@ public class MainActivity extends AppCompatActivity
                 //getString(R.string.pref_language_default)
         );
 
+        String state = sharedPreferences.getString(
+                getString(R.string.pref_state_key),
+                "OR"
+        );
+
+        String pmin = sharedPreferences.getString(
+                getString(R.string.pref_pmin_key),
+                "0"
+        );
+
+        String pmax = sharedPreferences.getString(
+                getString(R.string.pref_pmax_key),
+                "100000000"
+        );
+
 
         realtorSearchViewModel.loadSearchResults(
-                "",city , "OR", "relevance", beds, baths, "0", "10000000"
+                "",city , state, "relevance", beds, baths, pmin, pmax
         );
 
         //**********************************************
