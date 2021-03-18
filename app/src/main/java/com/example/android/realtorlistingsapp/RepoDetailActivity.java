@@ -91,6 +91,9 @@ public class RepoDetailActivity extends AppCompatActivity {
             case R.id.action_bookmark:
                 toggleRepoBookmark(item);
                 return true;
+            case R.id.action_email:
+                email();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -145,5 +148,15 @@ public class RepoDetailActivity extends AppCompatActivity {
             Intent chooserIntent = Intent.createChooser(intent, null);
             startActivity(chooserIntent);
         }
+    }
+
+    private void email() {
+
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse(
+                "mailto:"+
+                        "?subject=" + Uri.encode("Real Estate I'm Interested In!") +
+                        "&body=" + Uri.encode("Hi " + repo.agents.get(0).name + "! I'm interested in " + repo.address.line + ". It's listed at $" + repo.price +".")
+        ));
+        startActivity(emailIntent);
     }
 }

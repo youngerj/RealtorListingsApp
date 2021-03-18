@@ -69,7 +69,10 @@ public class RealtorSearchAdapter extends RecyclerView.Adapter<RealtorSearchAdap
         }
 
         void bind(RealtorListing repo) {
-            this.searchResultTV.setText(repo.address.line);
+            if(repo.line == null){
+                repo.line = repo.address.line;
+            }
+            this.searchResultTV.setText(repo.line);
         }
     }
 }
