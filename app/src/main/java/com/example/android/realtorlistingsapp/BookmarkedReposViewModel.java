@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.example.android.realtorlistingsapp.data.BookmarkedReposRepository;
 import com.example.android.realtorlistingsapp.data.RealtorListing;
-import com.example.android.realtorlistingsapp.data.SavedListing;
 
 import java.util.List;
 

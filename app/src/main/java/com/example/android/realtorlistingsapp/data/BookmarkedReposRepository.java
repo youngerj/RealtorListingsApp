@@ -18,6 +18,9 @@ public class BookmarkedReposRepository {
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
+                repo.line = repo.address.line;
+                repo.l_agent_id = repo.agents.get(0).id;
+                repo.l_agent_name = repo.agents.get(0).name;
                 dao.insert(repo);
             }
         });
