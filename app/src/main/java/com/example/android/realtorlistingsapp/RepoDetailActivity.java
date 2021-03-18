@@ -12,10 +12,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.realtorlistingsapp.data.RealtorListing;
+
+import org.w3c.dom.Text;
 
 public class RepoDetailActivity extends AppCompatActivity {
     public static final String EXTRA_GITHUB_REPO = "GitHubRepo";
@@ -45,13 +48,26 @@ public class RepoDetailActivity extends AppCompatActivity {
             this.repo = (RealtorListing)intent.getSerializableExtra(EXTRA_GITHUB_REPO);
             Log.d(TAG, "Got repo with name: " + repo.id);
 
-            TextView repoNameTV = findViewById(R.id.tv_repo_name);
-            TextView repoStarsTV = findViewById(R.id.tv_repo_stars);
-            TextView repoDescriptionTV = findViewById(R.id.tv_repo_description);
+           // TextView repoNameTV = findViewById(R.id.tv_repo_name);
+           // TextView repoStarsTV = findViewById(R.id.tv_repo_stars);
+           // TextView repoDescriptionTV = findViewById(R.id.tv_repo_description);
+            TextView repoAddressTV= findViewById(R.id.tv_address);
+            TextView repoBathTV= findViewById(R.id.tv_bath);
+            TextView repoRoomTV= findViewById(R.id.tv_room);
+            TextView repoPriceTV= findViewById(R.id.tv_price);
 
-            repoNameTV.setText(repo.id);
-            repoStarsTV.setText(String.valueOf(repo.beds));
-            repoDescriptionTV.setText(repo.id);
+            ImageView repoPhotoTV= findViewById(R.id.tv_photo);
+
+            repoAddressTV.setText(repo.address.line);
+            repoBathTV.setText(String.valueOf(repo.baths));
+            repoRoomTV.setText(String.valueOf(repo.beds));
+            repoPriceTV.setText(String.valueOf(repo.price));
+
+            repoPhotoTV.setImageURI(Uri.parse(repo.img));
+
+           // repoNameTV.setText(repo.id);
+           // repoStarsTV.setText(String.valueOf(repo.beds));
+          //  repoDescriptionTV.setText(repo.id);
         }
     }
 
@@ -159,4 +175,6 @@ public class RepoDetailActivity extends AppCompatActivity {
         ));
         startActivity(emailIntent);
     }
+
+
 }
