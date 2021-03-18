@@ -43,13 +43,13 @@ public class RealtorSearchRepository {
         this.loadingStatus = new MutableLiveData<>();
         this.loadingStatus.setValue(LoadingStatus.SUCCESS);
 
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(ListingAddress.class, new ListingAddress.JsonDeserializer())
-                .registerTypeAdapter(ListingAgent.class, new ListingAgent.JsonDeserializer())
-                .create();
+//        Gson gson = new GsonBuilder()
+//                .registerTypeAdapter(ListingAddress.class, new ListingAddress.JsonDeserializer())
+//                .registerTypeAdapter(ListingAgent.class, new ListingAgent.JsonDeserializer())
+//                .create();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
         this.realtorService = retrofit.create(RealtorService.class);
     }
@@ -124,8 +124,8 @@ public class RealtorSearchRepository {
             @Override
             public void onResponse(Call<RealtorSearchResults> call, Response<RealtorSearchResults> response) {
                 if (response.code() == 200) {
-                    //Log.d(TAG, String.valueOf(response.body().properties.get(0).address.get(0).line));
-                    //Log.d(TAG, String.valueOf(response.body().properties.get(0).agents.get(0).name));
+                    Log.d(TAG, String.valueOf(response.body().properties.get(0)));
+//                    Log.d(TAG, String.valueOf(response.body().properties.get(0).agents.get(0).name));
                     searchResults.setValue(response.body().properties);
                     loadingStatus.setValue(LoadingStatus.SUCCESS);
                 } else {

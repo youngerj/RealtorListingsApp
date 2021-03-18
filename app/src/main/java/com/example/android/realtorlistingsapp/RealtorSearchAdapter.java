@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.android.realtorlistingsapp.data.RealtorListing;
-import com.example.android.realtorlistingsapp.data.SavedListing;
 
 import java.util.List;
 
@@ -70,7 +69,7 @@ public class RealtorSearchAdapter extends RecyclerView.Adapter<RealtorSearchAdap
         }
 
         void bind(RealtorListing repo) {
-            this.searchResultTV.setText(repo.id);
+            this.searchResultTV.setText(repo.address.line);
         }
     }
 }

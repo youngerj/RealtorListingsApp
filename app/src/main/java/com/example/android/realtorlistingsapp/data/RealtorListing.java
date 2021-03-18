@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "realtorListings")
@@ -41,10 +42,15 @@ public class RealtorListing implements Serializable {
     @SerializedName("agent_id")
     public String agentId;
 
-//    @SerializedName("address")
-//    public ListingAddress address;
-//
-//    @SerializedName("agents")
-//    public ArrayList<ListingAgent> agents;
+    @Ignore
+    @SerializedName("address")
+    public ListingAddress address;
 
+    @Ignore
+    @SerializedName("agents")
+    public ArrayList<ListingAgent> agents;
+
+    public String line;
+    public String l_agent_id;
+    public String l_agent_name;
 }

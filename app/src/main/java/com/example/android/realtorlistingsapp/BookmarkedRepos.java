@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.android.realtorlistingsapp.data.RealtorListing;
-import com.example.android.realtorlistingsapp.data.SavedListing;
 
 import java.util.List;
 

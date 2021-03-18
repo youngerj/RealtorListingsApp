@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity
     private TextView errorMessageTV;
     private DrawerLayout drawerLayout;
 
-    private RealtorSearchAdapter githubSearchAdapter;
-    private RealtorSearchViewModel githubSearchViewModel;
+    private RealtorSearchAdapter realtorSearchAdapter;
+    private RealtorSearchViewModel realtorSearchViewModel;
 
     private SharedPreferences sharedPreferences;
 
@@ -62,25 +62,25 @@ public class MainActivity extends AppCompatActivity
         this.searchResultsRV.setLayoutManager(new LinearLayoutManager(this));
         this.searchResultsRV.setHasFixedSize(true);
 
-        this.githubSearchAdapter = new RealtorSearchAdapter(this);
-        this.searchResultsRV.setAdapter(this.githubSearchAdapter);
+        this.realtorSearchAdapter = new RealtorSearchAdapter(this);
+        this.searchResultsRV.setAdapter(this.realtorSearchAdapter);
 
         this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         this.sharedPreferences.registerOnSharedPreferenceChangeListener(this);
 
-        this.githubSearchViewModel = new ViewModelProvider(this).get(RealtorSearchViewModel.class);
+        this.realtorSearchViewModel = new ViewModelProvider(this).get(RealtorSearchViewModel.class);
 
-        this.githubSearchViewModel.getSearchResults().observe(
+        this.realtorSearchViewModel.getSearchResults().observe(
                 this,
                 new Observer<List<RealtorListing>>() {
                     @Override
                     public void onChanged(List<RealtorListing> realtorListings) {
-                        githubSearchAdapter.updateSearchResults(realtorListings);
+                        realtorSearchAdapter.updateSearchResults(realtorListings);
                     }
                 }
         );
 
-        this.githubSearchViewModel.getLoadingStatus().observe(
+        this.realtorSearchViewModel.getLoadingStatus().observe(
                 this,
                 new Observer<LoadingStatus>() {
                     @Override
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity
 //                            getString(R.string.pref_in_readme_key),
 //                            false
 //                    );
-                    githubSearchViewModel.loadSearchResults(
+                    realtorSearchViewModel.loadSearchResults(
                             searchQuery, "Portland", "OR", "relevance", "3", "2", "0", "10000000"
                     );
                 }
