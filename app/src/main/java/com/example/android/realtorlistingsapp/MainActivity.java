@@ -150,9 +150,34 @@ public class MainActivity extends AppCompatActivity
         });
         */
        // String searchQuery = searchBoxET.getText().toString();
-        realtorSearchViewModel.loadSearchResults(
-                "", "Portland", "OR", "relevance", "3", "2", "0", "10000000"
+//        realtorSearchViewModel.loadSearchResults(
+//                "", "Portland", "OR", "relevance", "3", "2", "0", "10000000"
+//        );
+
+        //----------------------------------------------------------------------------------------------------------------
+        String city = sharedPreferences.getString(
+                getString(R.string.pref_user_key),
+                "Corvallis"
         );
+
+        String beds = sharedPreferences.getString(
+                getString(R.string.pref_sort_key),
+                "2"
+                //getString(R.string.pref_sort_default)
+        );
+
+        String baths = sharedPreferences.getString(
+                getString(R.string.pref_language_key),
+                "2"
+                //getString(R.string.pref_language_default)
+        );
+
+
+        realtorSearchViewModel.loadSearchResults(
+                "",city , "OR", "relevance", beds, baths, "0", "10000000"
+        );
+
+//---------------------------------------------------------------------------------------------------------------
     }
 
     @Override
@@ -189,6 +214,31 @@ public class MainActivity extends AppCompatActivity
         } else {
             Log.d(TAG, "shared preference changed, key: " + key + ", value: " + sharedPreferences.getString(key, ""));
         }
+
+        //**********************************************
+        String city = sharedPreferences.getString(
+                getString(R.string.pref_user_key),
+                "Corvallis"
+        );
+
+        String beds = sharedPreferences.getString(
+                getString(R.string.pref_sort_key),
+                "2"
+                //getString(R.string.pref_sort_default)
+        );
+
+        String baths = sharedPreferences.getString(
+                getString(R.string.pref_language_key),
+                "2"
+                //getString(R.string.pref_language_default)
+        );
+
+
+        realtorSearchViewModel.loadSearchResults(
+                "",city , "OR", "relevance", beds, baths, "0", "10000000"
+        );
+
+        //**********************************************
     }
 
     @Override
