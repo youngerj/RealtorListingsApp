@@ -52,4 +52,18 @@
     <!-- Strings for user preference -->
     <string name="pref_user_key" translatable="false">pref_user</string>
     <string name="pref_user_title">City</string>
+
+    <!-- Strings for state preference -->
+    <string name="pref_state_key" translatable="false">pref_state</string>
+    <string name="pref_state_title">State</string>
+
+    <!-- Strings for state preference -->
+    <string name="pref_pmin_key" translatable="false">pref_pmin</string>
+    <string name="pref_pmin_title">Minimum Price</string>
+
+    <!-- Strings for state preference -->
+    <string name="pref_pmax_key" translatable="false">pref_pmax</string>
+    <string name="pref_pmax_title">Maximum Price</string>
+
+
 </resources>
