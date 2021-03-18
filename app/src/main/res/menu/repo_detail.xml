@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_bookmark"
-        android:title="@string/action_bookmark"
-        android:icon="@drawable/ic_action_bookmark_border"
+        android:title="Favorite this listing"
+        android:icon="@drawable/ic_heart_foreground"
         android:checkable="true"
         app:showAsAction="ifRoom"/>
     <item

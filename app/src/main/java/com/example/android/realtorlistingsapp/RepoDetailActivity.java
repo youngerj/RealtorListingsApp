@@ -67,10 +67,10 @@ public class RepoDetailActivity extends AppCompatActivity {
                         MenuItem menuItem = menu.findItem(R.id.action_bookmark);
                         if (repo == null) {
                             isBookmarked = false;
-                            menuItem.setIcon(R.drawable.ic_action_bookmark_border);
+                            menuItem.setIcon(R.drawable.ic_heart_outline_foreground);
                         } else {
                             isBookmarked = true;
-                            menuItem.setIcon(R.drawable.ic_action_bookmark_checked);
+                            menuItem.setIcon(R.drawable.ic_heart_foreground);
                         }
                     }
                 }
@@ -106,10 +106,10 @@ public class RepoDetailActivity extends AppCompatActivity {
             this.isBookmarked = !this.isBookmarked;
             menuItem.setChecked(this.isBookmarked);
             if (this.isBookmarked) {
-                menuItem.setIcon(R.drawable.ic_action_bookmark_checked);
+                menuItem.setIcon(R.drawable.ic_heart_foreground);
                 this.viewModel.insertBookmarkedRepo(this.repo);
             } else {
-                menuItem.setIcon(R.drawable.ic_action_bookmark_border);
+                menuItem.setIcon(R.drawable.ic_heart_outline_foreground);
                 this.viewModel.deleteBookmarkedRepo(this.repo);
             }
         }

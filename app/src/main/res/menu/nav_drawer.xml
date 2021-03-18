@@ -6,8 +6,8 @@
         android:icon="@drawable/ic_nav_search"/>
     <item
         android:id="@+id/nav_bookmarked_repos"
-        android:title="@string/nav_bookmarked_repos"
-        android:icon="@drawable/ic_nav_bookmarked_repos"/>
+        android:title="Favorite Listings"
+        android:icon="@drawable/ic_heart_foreground"/>
     <item
         android:id="@+id/nav_settings"
         android:title="@string/nav_settings"
